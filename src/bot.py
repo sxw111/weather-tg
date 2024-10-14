@@ -18,14 +18,14 @@ dp = Dispatcher()
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
     await message.answer(
-        "Hi, this is a bot that helps you find out the weather."
+        "Hi, this is a bot that helps you find out the weather. "
         "Write the name of the city."
     )
 
 
 @dp.message()
 async def get_weather(message: types.Message):
-    city = message.text
+    city = message.text.strip()
     weather_data = await weather_request(city=city)
 
     if weather_data:
