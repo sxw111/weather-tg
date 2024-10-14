@@ -27,6 +27,9 @@ async def weather_request(city: str):
                 return weather
             else:
                 return None
+            
+        except httpx.TimeoutException:
+            return None
 
         except httpx.HTTPStatusError:
             return None
